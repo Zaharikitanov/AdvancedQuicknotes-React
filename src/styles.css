@@ -3,23 +3,22 @@
     border: 1px solid black;
 }
 
-.quicknote input, .quicknote button {
+.note-items {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.red-btn, .input-field {
     border-radius: 20px;
     line-height: 12px;
 }
 
-.quicknote input {
-    margin-right: 7%;
-    width: 60%;
-}
-
-.quicknote button {
+.red-btn {
     background: red;
     color: white;
     width: 33%;
 }
 
-.note-items {
-    height: 300px;
-    overflow-y: auto;
+.input-field {
+    width: 60%;
 }
