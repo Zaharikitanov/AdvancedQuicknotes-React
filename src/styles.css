@@ -1,0 +1,25 @@
+.quicknote {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.quicknote input, .quicknote button {
+    border-radius: 20px;
+    line-height: 12px;
+}
+
+.quicknote input {
+    margin-right: 7%;
+    width: 60%;
+}
+
+.quicknote button {
+    background: red;
+    color: white;
+    width: 33%;
+}
+
+.note-items {
+    height: 300px;
+    overflow-y: auto;
+}
