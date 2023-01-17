@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import uuid from 'react-uuid';
 
-export default function Quicknote({title} : {title:string}) {
+export default function Quicknote({ title }: { title: string }) {
 
     const inputRef = useRef<HTMLInputElement>(null)
     const [rows, addRow] = useState<string[]>([]);

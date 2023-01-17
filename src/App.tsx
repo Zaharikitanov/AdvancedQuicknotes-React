@@ -9,10 +9,26 @@ export default function App() {
   const [columns, addColumn] = useState<string[]>([]);
 
   useEffect(() => {
+    const handleTabClose = (event: any) => {
+      event.preventDefault();
+
+      console.log('beforeunload event triggered');
+
+      return (event.returnValue = 'Are you sure you want to exit?');
+    };
+
+    window.addEventListener('beforeunload', handleTabClose);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleTabClose);
+    }
+  }, [])
+
+  useEffect(() => {
     if (inputRef.current) {
       inputRef.current.value = "";
     }
-  }, [columns]);
+  }, [notes]);
 
   const AddNewRow = (inputValue: HTMLInputElement | null) => {
     if (inputValue) {
