@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import uuid from 'react-uuid';
 
 export default function Quicknote({title} : {title:string}) {
 
@@ -22,7 +23,7 @@ export default function Quicknote({title} : {title:string}) {
             <h2>{title}</h2>
             <div className='note-items pt-4'>
                 {rows.map((value, index) => {
-                    return <p key={index}>{index + 1}. {value}</p>
+                    return <p key={uuid()}>{index + 1}. {value}</p>
                 })}
             </div>
             <div className='d-flex justify-content-between pt-3'>

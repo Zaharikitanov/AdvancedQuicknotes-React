@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Quicknote from "./quicknote";
+import uuid from 'react-uuid';
 import "./styles.css"
 
 export default function App() {
@@ -27,8 +28,8 @@ export default function App() {
       </div>
     </div>
     <div className="row">
-      {columns.map((value, index) => {
-        return <Quicknote key={index} title={value} />
+      {columns.map((value) => {
+        return <Quicknote key={uuid()} title={value} />
       })}
     </div>
   </div>
