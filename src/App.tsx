@@ -3,36 +3,31 @@ import Quicknote from "./quicknote";
 import uuid from 'react-uuid';
 import "./styles.css"
 
+interface Note {
+  id: string;
+  name: string;
+  tasks: string[];
+}
+
 export default function App() {
 
   const inputRef = useRef<HTMLInputElement>(null)
-  const [columns, addColumn] = useState<string[]>([]);
-
-  useEffect(() => {
-    const handleTabClose = (event: any) => {
-      event.preventDefault();
-
-      console.log('beforeunload event triggered');
-
-      return (event.returnValue = 'Are you sure you want to exit?');
-    };
-
-    window.addEventListener('beforeunload', handleTabClose);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleTabClose);
-    }
-  }, [])
+  const [columns, addColumn] = useState<Note[]>([]);
 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.value = "";
     }
-  }, [notes]);
+  }, [columns]);
 
   const AddNewRow = (inputValue: HTMLInputElement | null) => {
     if (inputValue) {
-      addColumn(prev => [...prev, inputValue.value.toString()])
+      let newColumn = {
+        id: uuid(),
+        name: inputValue.value.toString(),
+        tasks: new Array<string>()
+      }
+      addColumn(prev => [...prev, newColumn])
     }
   }
 
@@ -45,7 +40,7 @@ export default function App() {
     </div>
     <div className="row">
       {columns.map((value) => {
-        return <Quicknote key={uuid()} title={value} />
+        return <Quicknote key={value.id} title={value.name} />
       })}
     </div>
   </div>
